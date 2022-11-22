@@ -125,7 +125,7 @@ char delete(ListNodePtr *head, char value)
     else
     {
         previousPtr = *head;
-        currentPtr = (*head)->nextPtr
+        currentPtr = (*head)->nextPtr;
 
         while(currentPtr != NULL && currentPtr->data != value)
         {
@@ -143,6 +143,53 @@ char delete(ListNodePtr *head, char value)
     return '\0';
 }
 
+
+/** \brief
+ *
+ * \param head ListNodePtr*
+ * \return char
+ *
+ */
+void deleteAtPosition(ListNodePtr *head, int pos)
+{
+    int length = 0;
+    ListNodePtr currentPtr;
+    ListNodePtr previousPtr;
+    currentPtr = *head;
+    if (*head == NULL)
+    {
+        printf("Error: Nothing to delete\n");
+        return '\0';
+    }
+    if (pos == 1)
+    {
+        *head = currentPtr->nextPtr;
+    }
+    else
+    {
+        while(currentPtr != NULL)
+        {
+            currentPtr = currentPtr->nextPtr;
+            length++;
+        }
+        if (pos > 0 && pos <= length)
+        {
+            for(int i = 1; i < pos; i++)
+            {
+                previousPtr = currentPtr;
+                currentPtr = currentPtr->nextPtr;
+            }
+            previousPtr->nextPtr = currentPtr->nextPtr;
+        }
+        else
+        {
+            printf("Error: out of range\n");
+            return '\0';
+        }
+
+    }
+    free(currentPtr);
+}
 
 /** \brief
  *

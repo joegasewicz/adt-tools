@@ -14,6 +14,7 @@ typedef struct node {
  *  \example
  *   ListNodePtr head = NULL;
  */
+
 typedef node_t *ListNodePtr;
 
 
@@ -21,7 +22,7 @@ void insert(ListNodePtr *head, char value);
 void insertAtEnd(ListNodePtr *head, char value);
 void insertAtBeginning(ListNodePtr *head, char value);
 char delete(ListNodePtr *head, char value);
-void deleteAtBeginning(ListNodePtr *head);
+void deleteAtPosition(ListNodePtr *head, int pos);
 int isEmpty(ListNodePtr head);
 void printList(ListNodePtr currentPtr);
 
