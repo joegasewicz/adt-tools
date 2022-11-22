@@ -1,229 +1,202 @@
+/** @file linked_list.c */
+
 #include "linked_list.h"
 
 
-/** \brief
+/********************************************//**
+ * @brief Creates a new instance of the ADT_List object
  *
- * \example
+ * @param data void* generic data type
+ * @return ADT_List*
  *
- * \param head ListNodePtr*
- * \param val char
- * \return void
- *
- */
-void insertAtBeginning(ListNodePtr *head, char val)
+ ***********************************************/
+ADT_List *ADT_list_new(void *data)
 {
-    ListNodePtr new_node = malloc(sizeof(node_t));
-    new_node->data = val;
-    // if this is the first call then head will be NULL else gets set to the previous head
-    new_node->nextPtr = *head;
-    // set the head to this new node
-    *head = new_node;
+    ADT_List *l = malloc(sizeof(ADT_List));
+    l->data = data;
+    l->next = NULL;
+    return l;
 }
 
 
-/** \brief
- *
- * \param head ListNodePtr*
- * \param value char
- * \return void
- *
- */
-void insertAtEnd(ListNodePtr *head, char value)
-{
-    ListNodePtr current = *head;
-
-    if (current == NULL)
-    {
-        // there are no nodes so add the first
-        current = malloc(sizeof(node_t));
-        current->data = value;
-        current->nextPtr = NULL;
-        *head = current;
-    }
-    else
-    {
-        while(current->nextPtr != NULL)
-        {
-            // set current to the last node
-            current = current->nextPtr;
-        }
-        current->nextPtr = malloc(sizeof(node_t));
-        current->nextPtr->data = value;
-        current->nextPtr->nextPtr = NULL;
-    }
-}
-
-
-/** \brief
- *
- * \param head ListNodePtr*
- * \param value char
- * \return void
- *
- */
-void insert(ListNodePtr *head, char value)
-{
-    ListNodePtr newPtr;
-    ListNodePtr previousPtr;
-    ListNodePtr currentPtr;
-
-    newPtr = malloc(sizeof(node_t));
-
-    // check if space is available
-    if (newPtr != NULL)
-    {
-        newPtr->data = value;
-        newPtr->nextPtr = NULL;
-
-        previousPtr = NULL;
-        currentPtr = *head;
-
-        while(currentPtr->nextPtr != NULL && value > currentPtr->data)
-        {
-            previousPtr = currentPtr;
-            currentPtr = currentPtr->nextPtr;
-        } /* end while */
-        if (previousPtr == NULL)
-        {
-            // no nodes so create first node at beginning of list
-            *head = newPtr;
-        }
-        else
-        {
-            // insert a new node between the previous and current nodes
-            previousPtr->nextPtr = newPtr;
-            newPtr->nextPtr = currentPtr;
-        }
-    }
-    else
-    {
-        printf("Error %c not inserted. No memory available.\n", value);
-    }
-    // TODO return int error
-}
-
-
-/** \brief
- *
- * \param head ListNodePtr*
- * \param value char
- * \return char
- *
- */
-char delete(ListNodePtr *head, char value)
-{
-    ListNodePtr previousPtr;
-    ListNodePtr currentPtr;
-    ListNodePtr tempPtr;
-
-    if (value == (*head)->data)
-    {
-        tempPtr = *head; // store node being deleted
-        *head = (*head)->nextPtr;
-        free(tempPtr);
-    }
-    else
-    {
-        previousPtr = *head;
-        currentPtr = (*head)->nextPtr;
-
-        while(currentPtr != NULL && currentPtr->data != value)
-        {
-            previousPtr = currentPtr;
-            currentPtr = currentPtr->nextPtr;
-        }
-        if (currentPtr != NULL)
-        {
-            tempPtr = currentPtr;
-            previousPtr->nextPtr = currentPtr->nextPtr;
-            free(tempPtr);
-            return value;
-        }
-    }
-    return '\0';
-}
-
-
-/** \brief
- *
- * \param head ListNodePtr*
- * \return char
- *
- */
-void deleteAtPosition(ListNodePtr *head, int pos)
-{
-    int length = 0;
-    ListNodePtr currentPtr;
-    ListNodePtr previousPtr;
-    currentPtr = *head;
-    if (*head == NULL)
-    {
-        printf("Error: Nothing to delete\n");
-        return '\0';
-    }
-    if (pos == 1)
-    {
-        *head = currentPtr->nextPtr;
-    }
-    else
-    {
-        while(currentPtr != NULL)
-        {
-            currentPtr = currentPtr->nextPtr;
-            length++;
-        }
-        if (pos > 0 && pos <= length)
-        {
-            for(int i = 1; i < pos; i++)
-            {
-                previousPtr = currentPtr;
-                currentPtr = currentPtr->nextPtr;
-            }
-            previousPtr->nextPtr = currentPtr->nextPtr;
-        }
-        else
-        {
-            printf("Error: out of range\n");
-            return '\0';
-        }
-
-    }
-    free(currentPtr);
-}
-
-/** \brief
- *
- * \param currentPtr ListNodePtr
- * \return void
- *
- */
-void printList(ListNodePtr currentPtr)
-{
-    if (currentPtr == NULL)
-    {
-        printf("List is empty\n\n");
-    }
-    else
-    {
-        printf("The list is:\n");
-        while(currentPtr != NULL)
-        {
-            printf("%c --> ", currentPtr->data);
-            currentPtr = currentPtr->nextPtr;
-        }
-        printf("NULL\n\n");
-    }
-}
-
-/** \brief
- *
- * \param head ListNodePtr
- * \return int
- *
- */
-int isEmpty(ListNodePtr head)
-{
-    return head == NULL;
-}
-
-
+//void insertAtBeginning(ADT_List *head, char val)
+//{
+//    ADT_List new_node = malloc(sizeof(node_t));
+//    new_node->data = val;
+//    // if this is the first call then head will be NULL else gets set to the previous head
+//    new_node->next = *head;
+//    // set the head to this new node
+//    *head = new_node;
+//}
+//
+//
+//void insertAtEnd(ADT_List *head, char value)
+//{
+//    ADT_List current = *head;
+//
+//    if (current == NULL)
+//    {
+//        // there are no nodes so add the first
+//        current = malloc(sizeof(node_t));
+//        current->data = value;
+//        current->next = NULL;
+//        *head = current;
+//    }
+//    else
+//    {
+//        while(current->next != NULL)
+//        {
+//            // set current to the last node
+//            current = current->next;
+//        }
+//        current->next = malloc(sizeof(node_t));
+//        current->next->data = value;
+//        current->next->next = NULL;
+//    }
+//}
+//
+//
+//
+//void insert(ADT_List *head, char value)
+//{
+//    ADT_List newPtr;
+//    ADT_List previousPtr;
+//    ADT_List currentPtr;
+//
+//    newPtr = malloc(sizeof(node_t));
+//
+//    // check if space is available
+//    if (newPtr != NULL)
+//    {
+//        newPtr->data = value;
+//        newPtr->next = NULL;
+//
+//        previousPtr = NULL;
+//        currentPtr = *head;
+//
+//        while(currentPtr->next != NULL && value > currentPtr->data)
+//        {
+//            previousPtr = currentPtr;
+//            currentPtr = currentPtr->next;
+//        } /* end while */
+//        if (previousPtr == NULL)
+//        {
+//            // no nodes so create first node at beginning of list
+//            *head = newPtr;
+//        }
+//        else
+//        {
+//            // insert a new node between the previous and current nodes
+//            previousPtr->next = newPtr;
+//            newPtr->next = currentPtr;
+//        }
+//    }
+//    else
+//    {
+//        printf("Error %c not inserted. No memory available.\n", value);
+//    }
+//    // TODO return int error
+//}
+//
+//
+//
+//char delete(ADT_List *head, char value)
+//{
+//    ADT_List previousPtr;
+//    ADT_List currentPtr;
+//    ADT_List tempPtr;
+//
+//    if (value == (*head)->data)
+//    {
+//        tempPtr = *head; // store node being deleted
+//        *head = (*head)->next;
+//        free(tempPtr);
+//    }
+//    else
+//    {
+//        previousPtr = *head;
+//        currentPtr = (*head)->next;
+//
+//        while(currentPtr != NULL && currentPtr->data != value)
+//        {
+//            previousPtr = currentPtr;
+//            currentPtr = currentPtr->next;
+//        }
+//        if (currentPtr != NULL)
+//        {
+//            tempPtr = currentPtr;
+//            previousPtr->next = currentPtr->next;
+//            free(tempPtr);
+//            return value;
+//        }
+//    }
+//    return '\0';
+//}
+//
+//
+//void deleteAtPosition(ADT_List *head, int pos)
+//{
+//    int length = 0;
+//    ADT_List currentPtr;
+//    ADT_List previousPtr;
+//    currentPtr = *head;
+//    if (*head == NULL)
+//    {
+//        printf("Error: Nothing to delete\n");
+//        return '\0';
+//    }
+//    if (pos == 1)
+//    {
+//        *head = currentPtr->next;
+//    }
+//    else
+//    {
+//        while(currentPtr != NULL)
+//        {
+//            currentPtr = currentPtr->next;
+//            length++;
+//        }
+//        if (pos > 0 && pos <= length)
+//        {
+//            for(int i = 1; i < pos; i++)
+//            {
+//                previousPtr = currentPtr;
+//                currentPtr = currentPtr->next;
+//            }
+//            previousPtr->next = currentPtr->next;
+//        }
+//        else
+//        {
+//            printf("Error: out of range\n");
+//            return '\0';
+//        }
+//
+//    }
+//    free(currentPtr);
+//}
+//
+//
+//void printList(ADT_List currentPtr)
+//{
+//    if (currentPtr == NULL)
+//    {
+//        printf("List is empty\n\n");
+//    }
+//    else
+//    {
+//        printf("The list is:\n");
+//        while(currentPtr != NULL)
+//        {
+//            currentPtr = currentPtr->next;
+//        }
+//        printf("NULL\n\n");
+//    }
+//}
+//
+//
+//int isEmpty(ADT_List head)
+//{
+//    return head == NULL;
+//}
+//
+//
