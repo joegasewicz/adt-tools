@@ -17,21 +17,16 @@
  * @param data generic data type
  * @param next is the reference to the next node of the list
  ***********************************************/
-typedef struct node {
+typedef struct ADT_List_ {
     void *data;
-    struct node *next;
+    struct ADT_List_ *next;
 } ADT_List;
 
 void hello(void);
 
 ADT_List *ADT_list_new(void *data);
 
-//void insert(ADT_List *head, char value);
-//void insertAtEnd(ADT_List *head, char value);
-//void insertAtBeginning(ADT_List *head, char value);
-//char delete(ADT_List *head, char value);
-//void deleteAtPosition(ADT_List *head, int pos);
-//int isEmpty(ADT_List head);
-//void printList(ADT_List currentPtr);
+ADT_list_insert(ADT_List *list, void *data);
+
 
 #endif // LINKED_LIST_H_INCLUDED
