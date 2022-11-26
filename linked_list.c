@@ -18,8 +18,6 @@ ADT_List *ADT_list_new(void *data)
     return l;
 }
 
-
-
 /********************************************//**
  * @brief Inserts an ADT_List at the tail position of
  * the list. The list will remain in the head position
@@ -49,12 +47,12 @@ int ADT_list_insert(ADT_List *const list, void *data)
     return ADT_NO_ERROR;
 }
 
-
 /********************************************//**
  * @brief Delete a single ADT_List node from the list.
  * The list lookup requires a valid void *data reference.
  * This function also cleans up the memory the void *data
- * points to.
+ * points to. If there is an error allocating memory then
+ * this function will return a the value of ADT_ALLOC_ERROR.
  * @param list ADT_List*
  * @param data void* There must be a valid data reference
  * @return void*
@@ -87,38 +85,6 @@ void *ADT_list_delete(ADT_List *list, void *data)
     return data;
 }
 
-//char delete(ADT_List *head, char value)
-//{
-//    ADT_List previousPtr;
-//    ADT_List currentPtr;
-//    ADT_List tempPtr;
-//
-//    if (value == (*head)->data)
-//    {
-//        tempPtr = *head; // store node being deleted
-//        *head = (*head)->next;
-//        free(tempPtr);
-//    }
-//    else
-//      {
-//        previousPtr = *head;
-//        currentPtr = (*head)->next;
-//
-//        while(currentPtr != NULL && currentPtr->data != value)
-//        {
-//            previousPtr = currentPtr;
-//            currentPtr = currentPtr->next;
-//        }
-//        if (currentPtr != NULL)
-//        {
-//            tempPtr = currentPtr;
-//            previousPtr->next = currentPtr->next;
-//            free(tempPtr);
-//            return value;
-//        }
-//    }
-//    return '\0';
-//}
 
 
 //
