@@ -6,9 +6,6 @@
 
 #include "linked_list.h"
 
-#define ADT_IS_EMPTY(x) (x == NULL)
-
-
 START_TEST (test_ADT_list_new1)
 {
     char *expected = "Joe";
@@ -99,13 +96,13 @@ START_TEST(test_ADT_list_delete)
 }
 END_TEST
 
-START_TEST(test_ADT_IS_EMPTY)
+START_TEST(test_ADT_LIST_IS_EMPTY)
 {
     int *d = 1;
     ADT_List *l = ADT_list_new(d);
-    int result = ADT_IS_EMPTY(l);
+    int result = ADT_LIST_IS_EMPTY(l);
     ck_assert_int_eq(result, 0);
-    result = ADT_IS_EMPTY(NULL);
+    result = ADT_LIST_IS_EMPTY(NULL);
     ck_assert_int_eq(result, 1);
 }
 END_TEST
@@ -124,7 +121,7 @@ int main()
     tcase_add_test(tc_main, test_ADT_list_new1);
     tcase_add_test(tc_main, test_ADT_list_insert);
     tcase_add_test(tc_main, test_ADT_list_delete);
-    tcase_add_test(tc_main, test_ADT_IS_EMPTY);
+    tcase_add_test(tc_main, test_ADT_LIST_IS_EMPTY);
 
     suite_add_tcase(s, tc_main);
     sr = srunner_create(s);

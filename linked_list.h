@@ -1,5 +1,3 @@
-
-
 #ifndef LINKED_LIST_H_INCLUDED
 #define LINKED_LIST_H_INCLUDED
 
@@ -32,6 +30,34 @@ ADT_List *ADT_list_new(void *data);
 int ADT_list_insert(ADT_List *list, void *data);
 
 void *ADT_list_delete(ADT_List *list, void *data);
+
+/********************************************//**
+ * @brief Checks if the list is empty. The macro will
+ * return true if there are no nodes in the list or the
+ * list has not yet been initiated.
+ *
+ * @param x
+ * @return #define
+ *
+ ***********************************************/
+#define ADT_LIST_IS_EMPTY(l) (l == NULL)
+
+/********************************************//**
+ * @brief Returns the size of the list based on
+ * total count of nodes.
+ *
+ * @param l
+ * @return #define
+ *
+ ***********************************************/
+#define ADT_LIST_GET_SIZE(l)  \
+{ \
+  int i; \
+  while(l->next != NULL) \
+      i++ \
+  return i; \
+} \
+
 
 
 #endif // LINKED_LIST_H_INCLUDED
