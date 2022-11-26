@@ -5,6 +5,7 @@ A set of abstract data types.
 Functions:
 - [`ADT_List *ADT_list_new(data)`](https://github.com/joegasewicz/libadttools#adt_list-adt_list_newdata)
 - [`void ADT_list_insert(ADT_List *list, void *data)`](https://github.com/joegasewicz/libadttools#void-adt_list_insertadt_list-list-void-data)
+- [`void *ADT_list_delete(ADT_List *list, void *data)`]()
 
 #### ADT_List *ADT_list_new(data)
 Create a new list
@@ -32,6 +33,17 @@ ADT_List *head = ADT_list_new(data);
 
 // Pass the head list head reference to ADT_list_insert function
 ADT_list_insert(list, data2);
+```
+
+#### void *ADT_list_delete(ADT_List *list, void *data)
+```c
+// Create your `void* data` & insert the data ref into the list with `ADT_list_insert`
+ADT_list_insert(list, data);
+
+// Pass the dasta reference to the ADT_list_delete function as a 2nd argument
+void *result = ADT_list_delete(list, data);
+if (result < 0)
+      // handle error
 ```
 
 ## Authors

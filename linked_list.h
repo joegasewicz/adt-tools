@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#define ADT_NO_ERROR 0
+#define ADT_ALLOC_ERROR -1
 
 /********************************************//**
  * @brief To create a new linked list, create an instance of List.
@@ -26,7 +28,9 @@ void hello(void);
 
 ADT_List *ADT_list_new(void *data);
 
-ADT_list_insert(ADT_List *list, void *data);
+int ADT_list_insert(ADT_List *list, void *data);
+
+void *ADT_list_delete(ADT_List *list, void *data);
 
 
 #endif // LINKED_LIST_H_INCLUDED

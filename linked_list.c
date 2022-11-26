@@ -31,17 +31,22 @@ ADT_List *ADT_list_new(void *data)
  * @return
  *
  ***********************************************/
-ADT_list_insert(ADT_List *const list, void *data)
+int ADT_list_insert(ADT_List *const list, void *data)
 {
     ADT_List *tempList = list;
-
-    ADT_List *l = malloc(sizeof(ADT_List));
-    l->data = data;
     while(tempList->next != NULL)
     {
         tempList = tempList->next;
     }
-    tempList->next = l;
+    tempList->next = malloc(sizeof(ADT_List));
+    if (tempList->next == NULL)
+    {
+         printf("Error: unable to allocate memory");
+         return ADT_ALLOC_ERROR;
+    }
+    tempList->next->data = data;
+    tempList->next->next = NULL;
+    return ADT_NO_ERROR;
 }
 
 
@@ -52,15 +57,13 @@ ADT_list_insert(ADT_List *const list, void *data)
  * points to.
  * @param list ADT_List*
  * @param data void* There must be a valid data reference
- * @return ADT_List*
+ * @return void*
  *
  ***********************************************/
-ADT_List *ADT_list_delete(ADT_List *list, void *data)
+void *ADT_list_delete(ADT_List *list, void *data)
 {
-    ADT_List *previousPtr;
-    ADT_List *currentPtr;
-    ADT_List *tempPtr;
-
+    ADT_List *tempPtr = list;
+    ADT_List *prevPtr;
     // check if the current head of the list contains the same ref to data
     // & compare the address from void *data
     if (list->data == data)
@@ -72,9 +75,16 @@ ADT_List *ADT_list_delete(ADT_List *list, void *data)
     }
     else
     {
-
+      while(tempPtr->data != data)
+      {
+          prevPtr = tempPtr;
+          tempPtr = list->next;
+      }
+      prevPtr->next = tempPtr->next;
+      free(tempPtr->data);
+      free(tempPtr);
     }
-    return list;
+    return data;
 }
 
 //char delete(ADT_List *head, char value)
@@ -90,7 +100,7 @@ ADT_List *ADT_list_delete(ADT_List *list, void *data)
 //        free(tempPtr);
 //    }
 //    else
-//    {
+//      {
 //        previousPtr = *head;
 //        currentPtr = (*head)->next;
 //
@@ -110,16 +120,7 @@ ADT_List *ADT_list_delete(ADT_List *list, void *data)
 //    return '\0';
 //}
 
-//void insertAtBeginning(ADT_List *head, char val)
-//{
-//    ADT_List new_node = malloc(sizeof(node_t));
-//    new_node->data = val;
-//    // if this is the first call then head will be NULL else gets set to the previous head
-//    new_node->next = *head;
-//    // set the head to this new node
-//    *head = new_node;
-//}
-//
+
 //
 //void insertAtEnd(ADT_List *head, char value)
 //{
