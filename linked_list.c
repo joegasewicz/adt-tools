@@ -4,6 +4,17 @@
 
 
 /********************************************//**
+ * @brief Checks if the list is empty. The macro will
+ * return true if there are no nodes in the list or the
+ * list has not yet been initiated.
+ *
+ * @param x
+ * @return #define
+ *
+ ***********************************************/
+#define ADT_IS_EMPTY(x) (x == NULL);
+
+/********************************************//**
  * @brief Creates a new instance of the ADT_List object
  * & return the the list head.
  * @param data void* generic data type
@@ -252,9 +263,6 @@ void *ADT_list_delete(ADT_List *list, void *data)
 //}
 //
 //
-//int isEmpty(ADT_List head)
-//{
-//    return head == NULL;
-//}
+
 //
 //

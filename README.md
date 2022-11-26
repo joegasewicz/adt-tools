@@ -6,6 +6,7 @@ Functions:
 - [`ADT_List *ADT_list_new(data)`](https://github.com/joegasewicz/libadttools#adt_list-adt_list_newdata)
 - [`void ADT_list_insert(ADT_List *list, void *data)`](https://github.com/joegasewicz/libadttools#void-adt_list_insertadt_list-list-void-data)
 - [`void *ADT_list_delete(ADT_List *list, void *data)`](https://github.com/joegasewicz/libadttools#void-adt_list_deleteadt_list-list-void-data)
+- [`ADT_IS_EMPTY(head)` (macro)]()
 
 #### ADT_List *ADT_list_new(data)
 Create a new list
@@ -47,6 +48,14 @@ if (result < 0)
       // handle error
 ```
 
+#### ADT_IS_EMPTY (macro)
+Checks if the list is empty. The macro will return true if there are
+no nodes in the list or the list has not yet been initiated.
+```c
+int *d = 1;
+ADT_List *l = ADT_list_new(d);
+int result = ADT_IS_EMPTY(l); // returns false
+```
 ## Authors
 
 * **joegasewicz** - *Initial work* - [@joegasewicz](https://twitter.com/joegasewicz)

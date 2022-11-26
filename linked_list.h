@@ -9,6 +9,7 @@
 #define ADT_NO_ERROR 0
 #define ADT_ALLOC_ERROR -1
 
+
 /********************************************//**
  * @brief To create a new linked list, create an instance of List.
  *
