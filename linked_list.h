@@ -42,22 +42,5 @@ void *ADT_list_delete(ADT_List *list, void *data);
  ***********************************************/
 #define ADT_LIST_IS_EMPTY(l) (l == NULL)
 
-/********************************************//**
- * @brief Returns the size of the list based on
- * total count of nodes.
- *
- * @param l
- * @return #define
- *
- ***********************************************/
-#define ADT_LIST_GET_SIZE(l)  \
-{ \
-  int i; \
-  while(l->next != NULL) \
-      i++ \
-  return i; \
-} \
-
-
 
 #endif // LINKED_LIST_H_INCLUDED

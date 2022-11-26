@@ -107,6 +107,22 @@ START_TEST(test_ADT_LIST_IS_EMPTY)
 }
 END_TEST
 
+START_TEST(test_ADT_LIST_GET_SIZE)
+{
+    int *d1 = 1;
+    int *d2 = 1;
+    int *d3 = 1;
+    int *d4 = 1;
+    int result;
+    ADT_List *l = ADT_list_new(d1);
+    ADT_list_insert(l, d2);
+    ADT_list_insert(l, d3);
+    ADT_list_insert(l, d4);
+    result = ADT_LIST_GET_SIZE(l);
+    ck_assert_int_eq(result, 0);
+}
+END_TEST
+
 int main()
 {
     TCase *tc_main;
@@ -122,6 +138,7 @@ int main()
     tcase_add_test(tc_main, test_ADT_list_insert);
     tcase_add_test(tc_main, test_ADT_list_delete);
     tcase_add_test(tc_main, test_ADT_LIST_IS_EMPTY);
+    tcase_add_test(tc_main, test_ADT_LIST_GET_SIZE);
 
     suite_add_tcase(s, tc_main);
     sr = srunner_create(s);

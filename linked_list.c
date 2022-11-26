@@ -85,3 +85,20 @@ void *ADT_list_delete(ADT_List *list, void *data)
     return data;
 }
 
+
+/********************************************//**
+ * @brief Returns the size of the list based on
+ * total count of nodes.
+ *
+ * @param list ADT_List*
+ * @return int
+ *
+ ***********************************************/
+int ADT_list_size(ADT_List *list)
+{
+  int i = 0;
+  while(list->next != NULL)
+      i++;
+  return i;
+}
+
