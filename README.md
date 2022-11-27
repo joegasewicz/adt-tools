@@ -6,6 +6,7 @@ Functions:
 - [`ADT_List *ADT_list_new(data)`](https://github.com/joegasewicz/libadttools#adt_list-adt_list_newdata)
 - [`void ADT_list_insert(ADT_List *list, void *data)`](https://github.com/joegasewicz/libadttools#void-adt_list_insertadt_list-list-void-data)
 - [`void *ADT_list_delete(ADT_List *list, void *data)`](https://github.com/joegasewicz/libadttools#void-adt_list_deleteadt_list-list-void-data)
+- [`int ADT_list_size(ADT_List *list)` (macro)]()
 - [`ADT_IS_EMPTY(head)` (macro)](https://github.com/joegasewicz/libadttools#adt_is_empty-macro)
 
 #### ADT_List *ADT_list_new(data)
@@ -48,6 +49,17 @@ if (result < 0)
       // handle error
 ```
 
+#### int ADT_list_size(ADT_List *list)
+```c
+int *d1 = 1;
+int *d2 = 1;
+ADT_List *l = ADT_list_new(d1);
+ADT_list_insert(l, d2);
+
+// Get the sum total of nodes in the list
+int result = ADT_list_size(l); // returns 2
+```
+
 #### ADT_IS_EMPTY (macro)
 Checks if the list is empty. The macro will return true if there are
 no nodes in the list or the list has not yet been initiated.
@@ -56,6 +68,7 @@ int *d = 1;
 ADT_List *l = ADT_list_new(d);
 int result = ADT_IS_EMPTY(l); // returns false
 ```
+
 ## Authors
 
 * **joegasewicz** - *Initial work* - [@joegasewicz](https://twitter.com/joegasewicz)

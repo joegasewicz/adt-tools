@@ -97,8 +97,12 @@ void *ADT_list_delete(ADT_List *list, void *data)
 int ADT_list_size(ADT_List *list)
 {
   int i = 0;
-  while(list->next != NULL)
+  ADT_List *currPtr = list;
+  while (currPtr->next != NULL)
+  {
+      currPtr = currPtr->next;
       i++;
+  }
   return i;
 }
 

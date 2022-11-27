@@ -31,6 +31,7 @@ int ADT_list_insert(ADT_List *list, void *data);
 
 void *ADT_list_delete(ADT_List *list, void *data);
 
+
 /********************************************//**
  * @brief Checks if the list is empty. The macro will
  * return true if there are no nodes in the list or the
@@ -42,5 +43,6 @@ void *ADT_list_delete(ADT_List *list, void *data);
  ***********************************************/
 #define ADT_LIST_IS_EMPTY(l) (l == NULL)
 
+int ADT_list_size(ADT_List *list);
 
 #endif // LINKED_LIST_H_INCLUDED
