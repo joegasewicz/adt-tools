@@ -7,7 +7,7 @@ Functions:
 - [`void ADT_list_insert(ADT_List *list, void *data)`](https://github.com/joegasewicz/libadttools#void-adt_list_insertadt_list-list-void-data)
 - [`void *ADT_list_delete(ADT_List *list, void *data)`](https://github.com/joegasewicz/libadttools#void-adt_list_deleteadt_list-list-void-data)
 - [`int ADT_list_size(ADT_List *list)`](https://github.com/joegasewicz/adt-tools#int-adt_list_sizeadt_list-list)
-- [`ADT_IS_EMPTY(head)` (macro)](https://github.com/joegasewicz/libadttools#adt_is_empty-macro)
+- [`ADT_IS_EMPTY(head)` (macro)](https://github.com/joegasewicz/adt-tools#adt_is_emptyl-macro)
 - [`ADT_LIST_NEXT(head)` (macro)](https://github.com/joegasewicz/adt-tools#adt_list_nextl-macro)
 - [`ADT_LIST_DATA(head)` (macro)](https://github.com/joegasewicz/adt-tools#adt_list_datal-macro)
 
