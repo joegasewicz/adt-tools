@@ -144,12 +144,47 @@ START_TEST(test_ADT_LIST_NEXT)
 }
 END_TEST
 
-START_TEST(test_ADT_LIST_DATA)
+START_TEST (test_ADT_LIST_DATA)
 {
       int *d1 = 1;
       ADT_List *l = ADT_list_new(d1);
       int result = ADT_LIST_DATA(l);
       ck_assert_int_eq(result, 1);
+}
+END_TEST
+
+START_TEST (test_ADT_list_destroy)
+{
+    int *d1 = 1;
+    int *d2 = 2;
+    int *d3 = 3;
+    int *d4 = 4;
+    int result;
+    ADT_List *l = ADT_list_new(d1);
+    ADT_list_insert(l, d2);
+    ADT_list_insert(l, d3);
+    ADT_list_insert(l, d4);
+    ADT_list_destroy(l);
+    ck_assert_int_eq(ADT_LIST_IS_EMPTY(l), 0);
+}
+END_TEST
+
+START_TEST(test_ADT_list_tail)
+{
+    int *d1 = 1;
+    int *d2 = 2;
+    int *d3 = 3;
+    int *d4 = 4;
+    int result;
+    ADT_List *l = ADT_list_new(d1);
+    ADT_list_insert(l, d2);
+    ADT_list_insert(l, d3);
+    ADT_list_insert(l, d4);
+    ADT_List *l2 = ADT_LIST_NEXT(l);
+    ADT_List *l3 = ADT_LIST_NEXT(l2);
+    ADT_List *l4 = ADT_LIST_NEXT(l3);
+    ADT_List *tail = ADT_list_tail(l);
+    ck_assert_ptr_eq(tail, l4);
 }
 END_TEST
 
@@ -171,6 +206,8 @@ int main()
     tcase_add_test(tc_main, test_ADT_list_size);
     tcase_add_test(tc_main, test_ADT_LIST_NEXT);
     tcase_add_test(tc_main, test_ADT_LIST_DATA);
+    tcase_add_test(tc_main, test_ADT_list_destroy);
+    tcase_add_test(tc_main, test_ADT_list_tail);
 
     suite_add_tcase(s, tc_main);
     sr = srunner_create(s);
