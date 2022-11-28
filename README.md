@@ -1,4 +1,4 @@
-# libadttools
+# ADT Tools
 A set of abstract data types.
 
 ### Linked List
@@ -8,6 +8,19 @@ Functions:
 - [`void *ADT_list_delete(ADT_List *list, void *data)`](https://github.com/joegasewicz/libadttools#void-adt_list_deleteadt_list-list-void-data)
 - [`int ADT_list_size(ADT_List *list)` (macro)]()
 - [`ADT_IS_EMPTY(head)` (macro)](https://github.com/joegasewicz/libadttools#adt_is_empty-macro)
+- [`ADT_LIST_NEXT(head)` (macro)]()
+- [`ADT_LIST_DATA(head)` (macro)]()
+
+
+### Stack (TODO)
+
+### Queue (TODO)
+
+### Doubly Linked List (TODO)
+
+### Binary Tree (TODO)
+
+### Hash Table (TODO)
 
 #### ADT_List *ADT_list_new(data)
 Create a new list
@@ -60,13 +73,33 @@ ADT_list_insert(l, d2);
 int result = ADT_list_size(l); // returns 2
 ```
 
-#### ADT_IS_EMPTY (macro)
+#### ADT_IS_EMPTY(l) (macro)
 Checks if the list is empty. The macro will return true if there are
 no nodes in the list or the list has not yet been initiated.
 ```c
 int *d = 1;
 ADT_List *l = ADT_list_new(d);
 int result = ADT_IS_EMPTY(l); // returns false
+```
+
+#### ADT_LIST_NEXT(l) (macro)
+Get the next list node
+```c
+int *d1 = 1;
+int *d2 = 2;
+int result;
+ADT_List *l = ADT_list_new(d1);
+ADT_list_insert(l, d2);
+ADT_List *l2 = ADT_LIST_NEXT(l);
+ADT_List *l3 = ADT_LIST_NEXT(l2);
+```
+
+#### ADT_LIST_DATA(l) (macro)
+Get the current node's data
+```c
+int *d1 = 1;
+ADT_List *l = ADT_list_new(d1);
+int result = ADT_LIST_DATA(l);
 ```
 
 ## Authors

@@ -45,6 +45,15 @@ void hello(void);
  ***********************************************/
 #define ADT_LIST_NEXT(l) (l->next)
 
+/********************************************//**
+ * @brief Returns the current node's data
+ *
+ * @param l
+ * @return #define
+ *
+ ***********************************************/
+#define ADT_LIST_DATA(l) (l->data)
+
 // Prototypes
 ADT_List *ADT_list_new(void *data);
 
@@ -56,11 +65,7 @@ int ADT_list_size(ADT_List *list);
 
 void ADT_list_destroy(ADT_List * list); // TODO
 
-void ADT_list_next(ADT_List *list); // TODO
-
 void ADT_list_tail(ADT_List *list); // TODO
-
-void ADT_list_data(ADT_List *list); // TODO
 
 
 #endif // LINKED_LIST_H_INCLUDED
