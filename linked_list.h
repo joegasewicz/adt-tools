@@ -25,13 +25,6 @@ typedef struct ADT_List_ {
 
 void hello(void);
 
-ADT_List *ADT_list_new(void *data);
-
-int ADT_list_insert(ADT_List *list, void *data);
-
-void *ADT_list_delete(ADT_List *list, void *data);
-
-
 /********************************************//**
  * @brief Checks if the list is empty. The macro will
  * return true if there are no nodes in the list or the
@@ -43,6 +36,31 @@ void *ADT_list_delete(ADT_List *list, void *data);
  ***********************************************/
 #define ADT_LIST_IS_EMPTY(l) (l == NULL)
 
+/********************************************//**
+ * @brief Returns a pointer to the node in the list
+ *
+ * @param l
+ * @return #define
+ *
+ ***********************************************/
+#define ADT_LIST_NEXT(l) (l->next)
+
+// Prototypes
+ADT_List *ADT_list_new(void *data);
+
+int ADT_list_insert(ADT_List *list, void *data);
+
+void *ADT_list_delete(ADT_List *list, void *data);
+
 int ADT_list_size(ADT_List *list);
+
+void ADT_list_destroy(ADT_List * list); // TODO
+
+void ADT_list_next(ADT_List *list); // TODO
+
+void ADT_list_tail(ADT_List *list); // TODO
+
+void ADT_list_data(ADT_List *list); // TODO
+
 
 #endif // LINKED_LIST_H_INCLUDED

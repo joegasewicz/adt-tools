@@ -123,6 +123,26 @@ START_TEST(test_ADT_list_size)
 }
 END_TEST
 
+START_TEST(test_ADT_LIST_NEXT)
+{
+    int *d1 = 1;
+    int *d2 = 2;
+    int *d3 = 3;
+    int *d4 = 4;
+    int result;
+    ADT_List *l = ADT_list_new(d1);
+    ADT_list_insert(l, d2);
+    ADT_list_insert(l, d3);
+    ADT_list_insert(l, d4);
+    ck_assert_int_eq(l->data, 1);
+    ADT_List *l2 = ADT_LIST_NEXT(l);
+    ck_assert_int_eq(l2->data, 2);
+    ADT_List *l3 = ADT_LIST_NEXT(l2);
+    ck_assert_int_eq(l3->data, 3);
+    ADT_List *l4 = ADT_LIST_NEXT(l3);
+    ck_assert_int_eq(l4->data, 4);
+}
+END_TEST
 
 int main()
 {
@@ -140,6 +160,7 @@ int main()
     tcase_add_test(tc_main, test_ADT_list_delete);
     tcase_add_test(tc_main, test_ADT_LIST_IS_EMPTY);
     tcase_add_test(tc_main, test_ADT_list_size);
+    tcase_add_test(tc_main, test_ADT_LIST_NEXT);
 
     suite_add_tcase(s, tc_main);
     sr = srunner_create(s);
