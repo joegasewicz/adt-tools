@@ -106,3 +106,47 @@ int ADT_list_size(ADT_List *list)
   return i;
 }
 
+/********************************************//**
+ * @brief Detaches each node from the list.
+ * This function does not destroy allocated memory
+ * assigned to the node's data.
+ *
+ * @param list ADT_List*
+ * @return void
+ *
+ ***********************************************/
+void ADT_list_destroy(ADT_List * list)
+{
+    ADT_List *tempPtr;
+    if (list == NULL)
+      return;
+    while(tempPtr->next != NULL)
+    {
+       if (list->next == NULL)
+       {
+            free(list);
+            break;
+       }
+       tempPtr = list;
+       list = list->next;
+       if (tempPtr)
+           free(tempPtr);
+    }
+}
+
+/********************************************//**
+ * @brief Returns the last node in the list
+ *
+ * @param list ADT_List*
+ * @return void
+ *
+ ***********************************************/
+ADT_List *ADT_list_tail(ADT_List *list)
+{
+    ADT_List *tempPtr = list;
+    if (tempPtr->next == NULL)
+      return tempPtr;
+    while (tempPtr->next != NULL)
+      tempPtr = tempPtr->next;
+    return tempPtr;
+}

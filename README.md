@@ -6,20 +6,17 @@ A set of abstract data types.
 - [`void ADT_list_insert(ADT_List *list, void *data)`](https://github.com/joegasewicz/libadttools#void-adt_list_insertadt_list-list-void-data)
 - [`void *ADT_list_delete(ADT_List *list, void *data)`](https://github.com/joegasewicz/libadttools#void-adt_list_deleteadt_list-list-void-data)
 - [`int ADT_list_size(ADT_List *list)`](https://github.com/joegasewicz/adt-tools#int-adt_list_sizeadt_list-list)
+- [`void ADT_list_destroy(ADT_List * list);`]()
+- [`ADT_List *ADT_list_tail(ADT_List *list)`]()
 - [`ADT_IS_EMPTY(head)` (macro)](https://github.com/joegasewicz/adt-tools#adt_is_emptyl-macro)
 - [`ADT_LIST_NEXT(head)` (macro)](https://github.com/joegasewicz/adt-tools#adt_list_nextl-macro)
 - [`ADT_LIST_DATA(head)` (macro)](https://github.com/joegasewicz/adt-tools#adt_list_datal-macro)
 
-
-### Stack (TODO)
-
-### Queue (TODO)
-
-### Doubly Linked List (TODO)
-
-### Binary Tree (TODO)
-
-### Hash Table (TODO)
+##### Stack (TODO)
+##### Queue (TODO)
+##### Doubly Linked List (TODO)
+##### Binary Tree (TODO)
+##### Hash Table (TODO)
 
 #### ADT_List *ADT_list_new(data)
 Create a new list
@@ -99,6 +96,30 @@ Get the current node's data
 int *d1 = 1;
 ADT_List *l = ADT_list_new(d1);
 int result = ADT_LIST_DATA(l);
+```
+
+#### void ADT_list_destroy(ADT_List * list)
+Detaches each node from the list.
+This function does not destroy allocated memory
+assigned to the node's data.
+```c
+int *d1 = 1;
+int *d2 = 2;
+int result;
+ADT_List *l = ADT_list_new(d1);
+ADT_list_insert(l, d2);
+ADT_list_destroy(l);
+```
+#### ADT_List *ADT_list_tail(ADT_List *list)
+Returns the last node in the list
+```c
+int *d1 = 1;
+int *d2 = 2;
+int result;
+ADT_List *l = ADT_list_new(d1);
+ADT_list_insert(l, d2);
+ADT_List *l2 = ADT_LIST_NEXT(l);
+ADT_List *tail = ADT_list_tail(l);
 ```
 
 ## Authors

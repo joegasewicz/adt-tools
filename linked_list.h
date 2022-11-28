@@ -30,7 +30,7 @@ void hello(void);
  * return true if there are no nodes in the list or the
  * list has not yet been initiated.
  *
- * @param x
+ * @param l
  * @return #define
  *
  ***********************************************/
@@ -63,9 +63,9 @@ void *ADT_list_delete(ADT_List *list, void *data);
 
 int ADT_list_size(ADT_List *list);
 
-void ADT_list_destroy(ADT_List * list); // TODO
+void ADT_list_destroy(ADT_List * list);
 
-void ADT_list_tail(ADT_List *list); // TODO
+ADT_List *ADT_list_tail(ADT_List *list);
 
 
 #endif // LINKED_LIST_H_INCLUDED
