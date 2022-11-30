@@ -12,7 +12,15 @@ A set of abstract data types.
 - [`ADT_LIST_NEXT(head)` (macro)](https://github.com/joegasewicz/adt-tools#adt_list_nextl-macro)
 - [`ADT_LIST_DATA(head)` (macro)](https://github.com/joegasewicz/adt-tools#adt_list_datal-macro)
 
-##### Stack (TODO)
+### Stack
+- [`ADT_Stack *ADT_stk_init(void *data)`]()
+- [`int *ADT_stk_push(ADT_Stack *stack, void *data)`]()
+- [`int *ADT_stk_pop(ADT_Stack *stack)`]()
+- [`ADT_Stack *ADT_stk_peek(const ADT_Stack *stack)`]()
+- [`void ADT_stk_destroy(ADT_Stack *stack)`]()
+- [`int ADT_stk_size(ADT_Stack *stack)`]()
+- [`ADT_STACK_IS_EMPTY(s)` (macro)]()
+
 ##### Queue (TODO)
 ##### Doubly Linked List (TODO)
 ##### Binary Tree (TODO)
@@ -121,6 +129,8 @@ ADT_list_insert(l, d2);
 ADT_List *l2 = ADT_LIST_NEXT(l);
 ADT_List *tail = ADT_list_tail(l);
 ```
+
+####
 
 ## Authors
 

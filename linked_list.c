@@ -1,7 +1,6 @@
 /** @file linked_list.c */
 
-#include "linked_list.h"
-
+#include "adt_tools.h"
 
 /********************************************//**
  * @brief Creates a new instance of the ADT_List object
@@ -145,7 +144,7 @@ ADT_List *ADT_list_tail(ADT_List *list)
 {
     ADT_List *tempPtr = list;
     if (tempPtr->next == NULL)
-      return tempPtr;
+        return tempPtr;
     while (tempPtr->next != NULL)
       tempPtr = tempPtr->next;
     return tempPtr;
