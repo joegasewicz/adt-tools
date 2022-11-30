@@ -208,6 +208,84 @@ START_TEST(test_ADT_stk_push)
 }
 END_TEST
 
+START_TEST(test_ADT_STACK_IS_EMPTY)
+{
+    int *d = 1;
+    ADT_Stack *s = ADT_stk_init(d);
+    int result = ADT_STACK_IS_EMPTY(s);
+    ck_assert_int_eq(result, 0);
+    result = ADT_STACK_IS_EMPTY(NULL);
+    ck_assert_int_eq(result, 1);
+}
+END_TEST
+
+START_TEST(test_ADT_stk_pop)
+{
+    int *d1 = 1;
+    int *d2 = 2;
+    int *d3 = 3;
+    int *d4 = 4;
+    ADT_Stack *s = ADT_stk_init(d1);
+    int result2 = ADT_stk_push(s, d2);
+    int result3 = ADT_stk_push(s, d3);
+    int result4 = ADT_stk_push(s, d4);
+    int count = 1;
+    while (count < 5)
+    {
+        ck_assert_int_eq(s->data, count);
+        s = s->next;
+        count++;
+    }
+}
+END_TEST
+
+START_TEST(test_ADT_stk_peek)
+{
+    int *d1 = 1;
+    int *d2 = 2;
+    int *d3 = 3;
+    int *d4 = 4;
+    ADT_Stack *s = ADT_stk_init(d1);
+    int result2 = ADT_stk_push(s, d2);
+    int result3 = ADT_stk_push(s, d3);
+    int result4 = ADT_stk_push(s, d4);
+    ADT_Stack *peekStk = ADT_stk_peek(s);
+    ck_assert_int_eq(peekStk->data, 4);
+}
+END_TEST
+
+START_TEST (test_ADT_stk_destroy)
+{
+    int *d1 = 1;
+    int *d2 = 2;
+    int *d3 = 3;
+    int *d4 = 4;
+    int result;
+    ADT_Stack *s = ADT_stk_init(d1);
+    ADT_stk_push(s, d2);
+    ADT_stk_push(s, d3);
+    ADT_stk_push(s, d4);
+    ADT_stk_destroy(s);
+    ck_assert_int_eq(ADT_STACK_IS_EMPTY(s), 0);
+}
+END_TEST
+
+START_TEST(test_ADT_stk_size)
+{
+    int *d1 = 1;
+    int *d2 = 1;
+    int *d3 = 1;
+    int *d4 = 1;
+    int result;
+    ADT_Stack *s = ADT_stk_init(d1);
+    ADT_list_insert(s, d2);
+    ADT_list_insert(s, d3);
+    ADT_list_insert(s, d4);
+    result = ADT_stk_size(s);
+    ck_assert_int_eq(result, 3);
+}
+END_TEST
+
 int main()
 {
     TCase *tc_main;
@@ -230,6 +308,11 @@ int main()
     tcase_add_test(tc_main, test_ADT_list_tail);
     tcase_add_test(tc_main, test_ADT_stk_init);
     tcase_add_test(tc_main, test_ADT_stk_push);
+    tcase_add_test(tc_main, test_ADT_STACK_IS_EMPTY);
+    tcase_add_test(tc_main, test_ADT_stk_pop);
+    tcase_add_test(tc_main, test_ADT_stk_peek);
+    tcase_add_test(tc_main, test_ADT_stk_destroy);
+    tcase_add_test(tc_main, test_ADT_stk_size);
 
     suite_add_tcase(s, tc_main);
     sr = srunner_create(s);

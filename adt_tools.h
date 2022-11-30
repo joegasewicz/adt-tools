@@ -3,6 +3,7 @@
 
 #define ADT_NO_ERROR 0
 #define ADT_ALLOC_ERROR -1
+#define ADT_STACK_NODE_HAS_NEXT -2
 
  #include <stdio.h>
  #include <stdlib.h>
@@ -66,7 +67,6 @@ void ADT_list_destroy(ADT_List * list);
 
 ADT_List *ADT_list_tail(ADT_List *list);
 
-
 /********************************************//**
  * @brief Implements the stack using a linked list
  * An ADT_Stack is technically a self referencing
@@ -75,17 +75,29 @@ ADT_List *ADT_list_tail(ADT_List *list);
  ***********************************************/
 typedef ADT_List ADT_Stack;
 
+/********************************************//**
+ * @brief Checks if the stack is empty. The macro will
+ * return true if there are no nodes in the stack or the
+ * stack has not yet been initiated.
+ *
+ * @param l
+ * @return #define
+ *
+ ***********************************************/
+#define ADT_STACK_IS_EMPTY(s) (s == NULL)
+
 ADT_Stack *ADT_stk_init(void *data);
 
 int *ADT_stk_push(ADT_Stack *stack, void *data);
 
-void ADT_stk_pop(ADT_Stack stack, void *data);
+int *ADT_stk_pop(ADT_Stack *stack);
 
-ADT_Stack *ADT_stk_top(ADT_Stack stack);
+ADT_Stack *ADT_stk_peek(const ADT_Stack *stack);
 
-bool ADT_stk_is_empty(ADT_Stack stack);
+void ADT_stk_destroy(ADT_Stack *stack);
 
-int ADT_stk_size(ADT_Stack);
+int ADT_stk_size(ADT_Stack *stack);
+
 
 
 #endif // LINKED_LIST_H_INCLUDED

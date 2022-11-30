@@ -144,7 +144,7 @@ ADT_List *ADT_list_tail(ADT_List *list)
 {
     ADT_List *tempPtr = list;
     if (tempPtr->next == NULL)
-      return tempPtr;
+        return tempPtr;
     while (tempPtr->next != NULL)
       tempPtr = tempPtr->next;
     return tempPtr;
