@@ -4,7 +4,7 @@
 #include <check.h>
 #include <string.h>
 
-#include "linked_list.h"
+#include "adt_tools.h"
 
 START_TEST (test_ADT_list_new1)
 {
@@ -188,6 +188,26 @@ START_TEST(test_ADT_list_tail)
 }
 END_TEST
 
+START_TEST(test_ADT_stk_init)
+{
+    int *d1 = 1;
+    ADT_Stack *s = ADT_stk_init(d1);
+    ck_assert_int_eq(s->data, 1);
+}
+END_TEST
+
+START_TEST(test_ADT_stk_push)
+{
+    int *d1 = 1;
+    int *d2 = 2;
+    ADT_Stack *s = ADT_stk_init(d1);
+    int result = ADT_stk_push(s, d2);
+    ck_assert_int_eq(s->data, 1);
+    ADT_Stack *s2 = s->next;
+    ck_assert_int_eq(s2->data, 2);
+}
+END_TEST
+
 int main()
 {
     TCase *tc_main;
@@ -208,6 +228,8 @@ int main()
     tcase_add_test(tc_main, test_ADT_LIST_DATA);
     tcase_add_test(tc_main, test_ADT_list_destroy);
     tcase_add_test(tc_main, test_ADT_list_tail);
+    tcase_add_test(tc_main, test_ADT_stk_init);
+    tcase_add_test(tc_main, test_ADT_stk_push);
 
     suite_add_tcase(s, tc_main);
     sr = srunner_create(s);

@@ -1,7 +1,6 @@
 /** @file linked_list.c */
 
-#include "linked_list.h"
-
+#include "adt_tools.h"
 
 /********************************************//**
  * @brief Creates a new instance of the ADT_List object

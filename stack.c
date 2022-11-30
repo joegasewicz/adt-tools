@@ -7,48 +7,39 @@
  ***********************************************/
  /** @file stack.c */
 
- #include <stdio.h>
- #include <stdlib.h>
- #include <stdbool.h>
-
- #include "stack.h"
-
-
+ #include "adt_tools.h"
 
  /********************************************//**
    * @brief Initiates the last node in the stack.
-  *
+  * It is the responsibility of the caller to manage
+  * the memory of void *data.
   * @param data void*
-  * @return int ~The return values indicates if there
-  * are any errors. See // TODO
+  * @return ADT_Stack*
   *
   ***********************************************/
- int init(void *data)
+ADT_Stack *ADT_stk_init(void *data)
  {
        ADT_Stack *stack = malloc(sizeof(ADT_Stack));
        if (stack == NULL)
             return ADT_ALLOC_ERROR;
        stack->data = data;
-       stack->link = NULL;
-       return ADT_NO_ERROR;
+       stack->next = NULL;
+       return stack;
  }
 
 /********************************************//**
  * @brief Pushes the next node on the stack.
  * You must initiates the stack by calling the
- * #init(void *data) first.
+ * #init(void *data) first. It is the responsibility
+ * of the caller to manage the memory of void *data.
  *
  * @param data void*
  * @return int
  *
  ***********************************************/
-int push(void *data)
+int *ADT_stk_push(ADT_Stack *stack, void *data)
  {
-      ADT_Stack *tempPtr = malloc(sizeof(ADT_Stack));
-      if (tempPtr == NULL)
-            return ADT_ALLOC_ERROR;
-      tempPtr->data = data;
-      tempPtr->link
+      return ADT_list_insert(stack, data);
  }
 
 /********************************************//**
@@ -58,13 +49,13 @@ int push(void *data)
  * @return bool
  *
  ***********************************************/
-bool is_empty(ADT_Stack *stack)
- {
-     ADT_Stack *temp_stack = stack;
-     if (temp_stack == NULL || temp_stack->link == NULL)
-         return true;
-      return false;
- }
+//bool is_empty(ADT_Stack *stack)
+// {
+//     ADT_Stack *temp_stack = stack;
+//     if (temp_stack == NULL || temp_stack->link == NULL)
+//         return true;
+//      return false;
+// }
 
 
 
