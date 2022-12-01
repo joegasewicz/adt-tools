@@ -3,9 +3,11 @@
 
 /* @file adt_tools.h */
 
+#define ADT_SUCCESS 0
 #define ADT_NO_ERROR 0
 #define ADT_ALLOC_ERROR -1
 #define ADT_STACK_NODE_HAS_NEXT -2
+#define ADT_NO_REFERENCE -3
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -90,9 +92,9 @@ typedef ADT_List ADT_Stack;
 
 ADT_Stack *ADT_stk_init(void *data);
 
-int *ADT_stk_push(ADT_Stack *stack, void *data);
+int ADT_stk_push(ADT_Stack *stack, void *data);
 
-int *ADT_stk_pop(ADT_Stack *stack);
+int ADT_stk_pop(ADT_Stack *stack);
 
 ADT_Stack *ADT_stk_peek(const ADT_Stack *stack);
 
