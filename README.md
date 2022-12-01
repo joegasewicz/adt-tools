@@ -26,6 +26,8 @@ A set of abstract data types.
 ##### Binary Tree (TODO)
 ##### Hash Table (TODO)
 
+<details>
+<summary>## Linked List</summary>
 #### ADT_List *ADT_list_new(data)
 Create a new list
 ```c
@@ -129,8 +131,9 @@ ADT_list_insert(l, d2);
 ADT_List *l2 = ADT_LIST_NEXT(l);
 ADT_List *tail = ADT_list_tail(l);
 ```
+</details>
+## Stack
 
-####
 
 ## Authors
 
