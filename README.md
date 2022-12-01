@@ -28,6 +28,7 @@ A set of abstract data types.
 
 <details>
 ##<summary>Linked List</summary>
+
 #### ADT_List *ADT_list_new(data)
 Create a new list
 ```c
@@ -131,12 +132,78 @@ ADT_list_insert(l, d2);
 ADT_List *l2 = ADT_LIST_NEXT(l);
 ADT_List *tail = ADT_list_tail(l);
 ```
+
 </details>
+
 <details>
 ##<summary>Stack</summary>
+
+
+### ADT_Stack *ADT_stk_init(void *data)
+Initiates the last node in the stack.
+It is the responsibility of the caller to manage
+the memory of void *data.
+```c
+int *d1 = 1;
+ADT_Stack *s = ADT_stk_init(d1);
+```
+
+#### int *ADT_stk_push(ADT_Stack *stack, void *data)
+Pushes the next node on the stack.
+You must initiates the stack by calling the
+`init(void *data)` first. It is the responsibility
+of the caller to manage the memory of void *data.
+```c
+int *d1 = 1;
+int *d2 = 2;
+ADT_Stack *s = ADT_stk_init(d1);
+int result = ADT_stk_push(s, d2);
+```
+
+#### int *ADT_stk_pop(ADT_Stack *stack)
+Removes the top nod from the stack.
+The caller must manage the memory of void *data.
+```c
+char *d0 = calloc(4, sizeof(char));
+ADT_Stack *s = ADT_stk_init(d0);
+int res1 = ADT_stk_pop(s);
+```
+
+#### ADT_Stack *ADT_stk_peek(const ADT_Stack *stack)
+Enables the caller to peek at the top
+node without popping it off the stack. It
+returns a reference to the top node.
+```c
+
+```
+
+#### void ADT_stk_destroy(ADT_Stack *stack)
+Detaches each node from the stack.
+This function does not destroy allocated memory
+assigned to the node's data.
+```c
+
+```
+
+#### int ADT_stk_size(ADT_Stack *stack)
+Returns the size of the stack based on
+total count of nodes.
+```c
+
+```
+
+#### ADT_STACK_IS_EMPTY(s) (macro)
+Checks if the stack is empty. The macro will
+return true if there are no nodes in the stack or the
+stack has not yet been initiated.
+```c
+int *d = 1;
+ADT_Stack *s = ADT_stk_init(d);
+int result = ADT_STACK_IS_EMPTY(s); // 0
+result = ADT_STACK_IS_EMPTY(NULL); // 1
+```
+
 </details>
-
-
 
 ## Authors
 

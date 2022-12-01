@@ -37,26 +37,46 @@ ADT_Stack *ADT_stk_init(void *data)
  * @return int
  *
  ***********************************************/
-int *ADT_stk_push(ADT_Stack *stack, void *data)
+int ADT_stk_push(ADT_Stack *stack, void *data)
 {
     return ADT_list_insert(stack, data);
 }
 
 /********************************************//**
- * @brief
+ * @brief Removes the top nod from the stack.
+ * The caller must manage the memory of void *data.
  *
  * @param stack ADT_Stack*
  * @return int*
  *
  ***********************************************/
-int *ADT_stk_pop(ADT_Stack *stack)
+int ADT_stk_pop(ADT_Stack *stack)
 {
-    ADT_Stack *top = stack;
-    while (top->next != NULL)
+
+    if (stack == NULL || stack->data == NULL) return ADT_NO_REFERENCE;
+    if (stack->next == NULL)
     {
-         top = top->next;
+        stack->data = NULL;
+        free(stack);
+        return ADT_SUCCESS;
     }
-    free(top);
+    ADT_Stack *head = stack;
+    ADT_Stack *prev;
+
+    while (head->next != NULL)
+    {
+        prev = head;
+        head = head->next;
+    }
+    if (head != NULL)
+    {
+        prev->next = NULL;
+        head->data = NULL; // the caller must manage the memory
+        free(head);
+        head = NULL;
+        return ADT_SUCCESS;
+    }
+    return ADT_NO_REFERENCE;
 }
 
 /********************************************//**
@@ -94,7 +114,6 @@ void ADT_stk_destroy(ADT_Stack *stack)
 {
     ADT_list_destroy(stack);
 }
-
 
 /********************************************//**
  * @brief Returns the size of the stack based on

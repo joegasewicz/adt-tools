@@ -200,11 +200,19 @@ START_TEST(test_ADT_stk_push)
 {
     int *d1 = 1;
     int *d2 = 2;
+    int *d3 = 3;
+    int *d4 = 4;
     ADT_Stack *s = ADT_stk_init(d1);
-    int result = ADT_stk_push(s, d2);
-    ck_assert_int_eq(s->data, 1);
-    ADT_Stack *s2 = s->next;
-    ck_assert_int_eq(s2->data, 2);
+    int result2 = ADT_stk_push(s, d2);
+    int result3 = ADT_stk_push(s, d3);
+    int result4 = ADT_stk_push(s, d4);
+    int count = 1;
+    while (count < 5)
+    {
+        ck_assert_int_eq(s->data, count);
+        s = s->next;
+        count++;
+    }
 }
 END_TEST
 
@@ -221,21 +229,32 @@ END_TEST
 
 START_TEST(test_ADT_stk_pop)
 {
-    int *d1 = 1;
-    int *d2 = 2;
-    int *d3 = 3;
-    int *d4 = 4;
-    ADT_Stack *s = ADT_stk_init(d1);
-    int result2 = ADT_stk_push(s, d2);
-    int result3 = ADT_stk_push(s, d3);
-    int result4 = ADT_stk_push(s, d4);
-    int count = 1;
-    while (count < 5)
-    {
-        ck_assert_int_eq(s->data, count);
-        s = s->next;
-        count++;
-    }
+    char *d0 = calloc(4, sizeof(char));
+    ADT_Stack *s = ADT_stk_init(d0);
+    int res1 = ADT_stk_pop(s);
+    ck_assert_int_eq(res1, 0);
+
+    char *d1 = calloc(4, sizeof(char));
+    char *d2 = calloc(4, sizeof(char));
+    char *d3 = calloc(4, sizeof(char));
+    char *d4 = calloc(4, sizeof(char));
+    ADT_Stack *s2 = ADT_stk_init(d1);
+    int res2 = ADT_stk_push(s2, d2);
+    int res3 = ADT_stk_push(s2, d3);
+    int res4 = ADT_stk_push(s2, d4);
+
+    int pop2 = ADT_stk_pop(s2);
+    ck_assert_int_eq(pop2, 0);
+
+    int pop3 = ADT_stk_pop(s2);
+    ck_assert_int_eq(pop3, 0);
+
+    int pop4 = ADT_stk_pop(s2);
+    ck_assert_int_eq(pop4, 0);
+
+    int pop5 = ADT_stk_pop(s2);
+    ck_assert_int_eq(pop5, 0); // TODO this should return -3
+
 }
 END_TEST
 
