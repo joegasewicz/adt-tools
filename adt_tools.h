@@ -1,13 +1,15 @@
 #ifndef LINKED_LIST_H_INCLUDED
 #define LINKED_LIST_H_INCLUDED
 
+/* @file adt_tools.h */
+
 #define ADT_NO_ERROR 0
 #define ADT_ALLOC_ERROR -1
 #define ADT_STACK_NODE_HAS_NEXT -2
 
- #include <stdio.h>
- #include <stdlib.h>
- #include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
 /********************************************//**
  * @brief To create a new linked list, create an instance of List.
  *
@@ -97,7 +99,5 @@ ADT_Stack *ADT_stk_peek(const ADT_Stack *stack);
 void ADT_stk_destroy(ADT_Stack *stack);
 
 int ADT_stk_size(ADT_Stack *stack);
-
-
 
 #endif // LINKED_LIST_H_INCLUDED

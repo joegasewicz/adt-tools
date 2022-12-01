@@ -1,14 +1,13 @@
-/*
-*******************************************//**
+/** @file stack.c */
+
+ #include "adt_tools.h"
+/********************************************//**
  * Inserts & deletes are only made at the top of
  * stack. The stack implements LIFO (last in - first out).
  * The stack is referenced via a pointer to the top node.
  * The link member of the last node in the stack is
  * set to NULL.
  ***********************************************/
- /** @file stack.c */
-
- #include "adt_tools.h"
 
  /********************************************//**
    * @brief Initiates the last node in the stack.
