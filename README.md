@@ -27,7 +27,7 @@ A set of abstract data types.
 ##### Hash Table (TODO)
 
 <details>
-<summary>## Linked List</summary>
+##<summary>Linked List</summary>
 #### ADT_List *ADT_list_new(data)
 Create a new list
 ```c
@@ -132,7 +132,10 @@ ADT_List *l2 = ADT_LIST_NEXT(l);
 ADT_List *tail = ADT_list_tail(l);
 ```
 </details>
-## Stack
+<details>
+##<summary>Stack</summary>
+</details>
+
 
 
 ## Authors
