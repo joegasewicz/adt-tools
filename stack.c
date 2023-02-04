@@ -1,6 +1,10 @@
 /** @file stack.c */
 
+<<<<<<< HEAD
 #include "adt_tools.h"
+=======
+ #include "adt_tools.h"
+>>>>>>> dac1b4ea3923defa77fcd43df02a23d41edbb87c
 /********************************************//**
  * Inserts & deletes are only made at the top of
  * stack. The stack implements LIFO (last in - first out).
@@ -9,7 +13,11 @@
  * set to NULL.
  ***********************************************/
 
+<<<<<<< HEAD
 /********************************************//**
+=======
+ /********************************************//**
+>>>>>>> dac1b4ea3923defa77fcd43df02a23d41edbb87c
    * @brief Initiates the last node in the stack.
   * It is the responsibility of the caller to manage
   * the memory of void *data.
@@ -90,6 +98,7 @@ int ADT_stk_pop(ADT_Stack *stack)
  ***********************************************/
 ADT_Stack *ADT_stk_peek(const ADT_Stack *stack)
 {
+<<<<<<< HEAD
     ADT_Stack *head = stack;
     if (stack == NULL || stack->next == NULL)
         return stack;
@@ -98,6 +107,16 @@ ADT_Stack *ADT_stk_peek(const ADT_Stack *stack)
         head = head->next;
     }
     return head;
+=======
+   ADT_Stack *head = stack;
+   if (stack == NULL || stack->next == NULL)
+        return stack;
+   while (head->next != NULL)
+   {
+       head = head->next;
+   }
+   return head;
+>>>>>>> dac1b4ea3923defa77fcd43df02a23d41edbb87c
 }
 
 

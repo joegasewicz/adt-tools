@@ -1,7 +1,24 @@
+<<<<<<< HEAD
 .idea
 tests/.idea
 cmake-build-debug
 tests/cmake-build-debug
+=======
+.vscode
+.idea
+
+adt_tools.layout
+
+tests/bin
+tests/obj
+tests/tests.*
+# codeblocks
+*.cbp
+*.depend
+bin
+obj
+doxygen
+>>>>>>> dac1b4ea3923defa77fcd43df02a23d41edbb87c
 
 # Prerequisites
 *.d
@@ -54,4 +71,8 @@ tests/cmake-build-debug
 modules.order
 Module.symvers
 Mkfile.old
+<<<<<<< HEAD
 dkms.conf
+=======
+dkms.conf
+>>>>>>> dac1b4ea3923defa77fcd43df02a23d41edbb87c

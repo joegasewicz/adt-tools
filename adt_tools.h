@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 //
 // Created by Joe Goose on 04/02/2023.
 //
 
 #ifndef LIBADTTOOLS_ADT_TOOLS_H
 #define LIBADTTOOLS_ADT_TOOLS_H
+=======
+#ifndef LINKED_LIST_H_INCLUDED
+#define LINKED_LIST_H_INCLUDED
+>>>>>>> dac1b4ea3923defa77fcd43df02a23d41edbb87c
 
 /* @file adt_tools.h */
 
@@ -106,5 +111,9 @@ void ADT_stk_destroy(ADT_Stack *stack);
 
 int ADT_stk_size(ADT_Stack *stack);
 
+<<<<<<< HEAD
 
 #endif //LIBADTTOOLS_ADT_TOOLS_H
+=======
+#endif // LINKED_LIST_H_INCLUDED
+>>>>>>> dac1b4ea3923defa77fcd43df02a23d41edbb87c
