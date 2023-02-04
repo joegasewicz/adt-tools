@@ -38,13 +38,8 @@ int ADT_list_insert(ADT_List *const list, void *data)
     tempList->next = malloc(sizeof(ADT_List));
     if (tempList->next == NULL)
     {
-<<<<<<< HEAD
         printf("Error: unable to allocate memory");
         return ADT_ALLOC_ERROR;
-=======
-         printf("Error: unable to allocate memory");
-         return ADT_ALLOC_ERROR;
->>>>>>> dac1b4ea3923defa77fcd43df02a23d41edbb87c
     }
     tempList->next->data = data;
     tempList->next->next = NULL;
@@ -77,7 +72,6 @@ void *ADT_list_delete(ADT_List *list, void *data)
     }
     else
     {
-<<<<<<< HEAD
         while(tempPtr->data != data)
         {
             prevPtr = tempPtr;
@@ -86,16 +80,6 @@ void *ADT_list_delete(ADT_List *list, void *data)
         prevPtr->next = tempPtr->next;
         free(tempPtr->data);
         free(tempPtr);
-=======
-      while(tempPtr->data != data)
-      {
-          prevPtr = tempPtr;
-          tempPtr = list->next;
-      }
-      prevPtr->next = tempPtr->next;
-      free(tempPtr->data);
-      free(tempPtr);
->>>>>>> dac1b4ea3923defa77fcd43df02a23d41edbb87c
     }
     return data;
 }
@@ -111,7 +95,6 @@ void *ADT_list_delete(ADT_List *list, void *data)
  ***********************************************/
 int ADT_list_size(ADT_List *list)
 {
-<<<<<<< HEAD
     int i = 0;
     ADT_List *currPtr = list;
     while (currPtr->next != NULL)
@@ -120,16 +103,6 @@ int ADT_list_size(ADT_List *list)
         i++;
     }
     return i;
-=======
-  int i = 0;
-  ADT_List *currPtr = list;
-  while (currPtr->next != NULL)
-  {
-      currPtr = currPtr->next;
-      i++;
-  }
-  return i;
->>>>>>> dac1b4ea3923defa77fcd43df02a23d41edbb87c
 }
 
 /********************************************//**
@@ -145,7 +118,6 @@ void ADT_list_destroy(ADT_List * list)
 {
     ADT_List *tempPtr;
     if (list == NULL)
-<<<<<<< HEAD
         return;
     while(tempPtr->next != NULL)
     {
@@ -158,20 +130,6 @@ void ADT_list_destroy(ADT_List * list)
         list = list->next;
         if (tempPtr)
             free(tempPtr);
-=======
-      return;
-    while(tempPtr->next != NULL)
-    {
-       if (list->next == NULL)
-       {
-            free(list);
-            break;
-       }
-       tempPtr = list;
-       list = list->next;
-       if (tempPtr)
-           free(tempPtr);
->>>>>>> dac1b4ea3923defa77fcd43df02a23d41edbb87c
     }
 }
 
@@ -188,10 +146,6 @@ ADT_List *ADT_list_tail(ADT_List *list)
     if (tempPtr->next == NULL)
         return tempPtr;
     while (tempPtr->next != NULL)
-<<<<<<< HEAD
         tempPtr = tempPtr->next;
-=======
-      tempPtr = tempPtr->next;
->>>>>>> dac1b4ea3923defa77fcd43df02a23d41edbb87c
     return tempPtr;
 }
