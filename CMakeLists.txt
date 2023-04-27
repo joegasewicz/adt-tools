@@ -6,4 +6,6 @@ set(CMAKE_C_STANDARD 99)
 add_library(
         adt_tools
         adt_tools.h
-        linked_list.c stack.c)
+        linked_list.c
+        stack.c
+)
